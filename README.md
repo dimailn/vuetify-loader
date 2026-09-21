@@ -4,6 +4,41 @@ This package is for Vuetify 2 only, for Vuetify 3 see [`master`](https://github.
 
 # vuetify-loader
 
+## Sass module configuration
+
+Use `styles.configFile` to configure every Vuetify Sass entrypoint without a
+resource-aware `sass-loader.additionalData` callback:
+
+```js
+const { VuetifyLoaderPlugin } = require('@dimailn/vuetify-loader')
+
+module.exports = {
+  plugins: [
+    new VuetifyLoaderPlugin({
+      styles: {
+        configFile: require.resolve('@insales/ui-kit/src/sass/vuetify-config.scss')
+      }
+    })
+  ]
+}
+```
+
+The plugin applies the config only to `vuetify/src/**/*.{sass,scss}`, puts the
+`@use` statement before Vuetify's own module directives, and registers the
+config file as a webpack dependency so watch mode and HMR rebuild when it
+changes. Application and ui-kit styles are not modified.
+
+`configFile` may also be relative to webpack's `context`. Vuetify is resolved
+from that context using Node's standard package resolution:
+
+```js
+new VuetifyLoaderPlugin({
+  styles: {
+    configFile: './src/styles/vuetify-config.scss'
+  }
+})
+```
+
 <p align="center">
   <a href="https://www.patreon.com/kaelwd">
     <img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" alt="Become a Patron" />
