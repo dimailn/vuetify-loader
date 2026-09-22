@@ -3,12 +3,18 @@
   "version": "2.0.0",
   "description": "A Webpack plugin for treeshaking Vuetify components and more",
   "main": "lib/index.js",
+  "files": [
+    "lib/",
+    "progressive-loader/",
+    "LICENSE.md",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuetifyjs/vuetify-loader.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test"
   },
   "author": "",
   "license": "MIT",
@@ -27,8 +33,8 @@
     "gm": "^1.23.0",
     "pug": "^2.0.0 || ^3.0.0",
     "sharp": "*",
-    "vue": "^2.7.2",
-    "vuetify": "^1.3.0 || ^2.0.0",
+    "vue": "^3.2.0",
+    "vuetify": ">=2.7.2-alpha.0 <3.0.0",
     "webpack": "^4.0.0 || ^5.0.0"
   },
   "peerDependenciesMeta": {
@@ -43,9 +49,13 @@
     }
   },
   "devDependencies": {
+    "css-loader": "^6.11.0",
     "gm": "^1.23.1",
+    "sass": "^1.101.0",
+    "sass-loader": "^16.0.8",
     "sharp": "^0.27.0",
-    "vue": "^2.7.2",
-    "vuetify": "^2.6.6"
+    "vue": "^3.5.0",
+    "vuetify": "npm:@dimailn/vuetify@2.7.2-alpha74",
+    "webpack": "^5.101.3"
   }
 }
